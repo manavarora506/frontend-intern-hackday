@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { getRepositories, getCommitsForRepo } from './api';
+import { getRepositories, getCommitsForRepo } from './Api';
 import CommitList from './CommitsList';
 
 const StyledListItem = styled(Grid)({

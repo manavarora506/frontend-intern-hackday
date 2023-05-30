@@ -22,21 +22,28 @@ const StyledHeader2 = styled(Typography)({
   marginBottom: "10px",
   textAlign: "center",
 });
+
 function App() {
   const [search, setSearch] = useState("");
   const [orgName, setOrgName] = useState("");
   const [accessToken, setAccessToken] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setOrgName(search);
-    setAccessToken("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");
+    setAccessToken("");
+
+    // Simulating loading state
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
   };
 
   return (
     <StyledContainer>
-      {/* <h1>Search for a GitHub organization</h1> */}
-      <StyledHeader2 variant="h3">Search for a GitHub organization </StyledHeader2>
+      <StyledHeader2 variant="h3">Search for a GitHub organization</StyledHeader2>
       <StyledForm onSubmit={handleFormSubmit}>
         <TextField
           value={search}
@@ -47,7 +54,7 @@ function App() {
           size="small"
         />
         <StyledButton type="submit" variant="contained" color="primary">
-          Search
+          {isLoading ? "Loading..." : "Search"}
         </StyledButton>
       </StyledForm>
       {orgName && (
@@ -60,3 +67,4 @@ function App() {
 }
 
 export default App;
+
